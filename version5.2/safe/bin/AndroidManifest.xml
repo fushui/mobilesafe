@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fushui.safe"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 粗略定位授权 -->
+    <!-- 精细定位授权 -->
+    <!-- 模拟定位授权 -->
+    <!-- 网络访问授权 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SettingCenterActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SettingCenter" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.HighToolActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.HighToolActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.AddIpCallctivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.AddIpCallctivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LockMobileActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.LockMobile" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.FirstSetupActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.FirstSetupActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SecondSetupActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SecondSetupActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ThirdSetupActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ThirdSetupActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ForthSetupActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ForthSetupActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ContactActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ContactActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ProtectedActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ProtectedActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.AddressQueryActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.AddressQueryActivity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BlackNumberActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.BlackNumberActivity" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".receiver.PhoneReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.SMSReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.MyAdmin" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/my_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.BootCompletedReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        
+        <service android:name=".service.BlackNumberService"></service>
+    </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.fushui.safe" >
+    </instrumentation>
+
+</manifest>
